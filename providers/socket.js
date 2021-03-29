@@ -1,4 +1,6 @@
-const io = require("socket.io")(8100);
+require('dotenv').config()
+const port = Number(process.env.DS_SOC_PORT)
+const io = require("socket.io")(port);
 
 class CMySoc {
     constructor() {
@@ -17,7 +19,6 @@ class CMySoc {
             this.socket = socket
         });
     }
-
     sendMessage(data) {
         this.socket.send(data)
     }
