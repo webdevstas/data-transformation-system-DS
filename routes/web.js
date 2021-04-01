@@ -1,13 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const cors = require('cors')
-const socket = require('../providers/socket')
 
 router.options('/', cors())
 
 router.post('/', cors(), (req, res) => {
     try {
-        socket.sendMessage(req.body)
+        req.dtsClient.sendMessage(req.body)
         res.json({
             status: 'received',
             msg: 'Успешно передано'
@@ -15,12 +14,10 @@ router.post('/', cors(), (req, res) => {
     } catch (err) {
         res.json({
             status: 'failed',
-            msg: 'Не удалось передать',
-            err
+            msg: 'Не удалось передать'
         })
-        console.log(err)
+        console.log('Client service is offline.', err)
     }
 })
-
 
 module.exports = router
