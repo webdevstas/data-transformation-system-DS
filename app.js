@@ -6,7 +6,7 @@ const CSocServer = require('./lib/classes/CSocServer')
 const CSocClient = require('./lib/classes/CSocClient')
 const express = require('express')
 const dtsClient = new CSocServer(process.env.DS_SOC_PORT, 'DTS-Client')
-const tbsServer = new CSocClient(process.env.TBS_ADDR, 'TBS-Server')
+const tbsServer = new CSocClient(process.env.TBS_URL, 'TBS-Server')
 
 /**
  * Telegram Bot Server Listeners
